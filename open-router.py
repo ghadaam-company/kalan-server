@@ -5,20 +5,7 @@ from microbit import button_a, button_b, accelerometer
 import random, music, audio, speech
 
 
-# prepare data
 
-"""
-Note: the indexes of the following tuple represent
-0 = toward up/north
-1 = toward left/west
-2 = toward right/east
-3 = toward down/south
-
-Since gesture "up" in micro:bit means "north side up",
-I inverted the direction here.
-But you can change the items of gestures, images and notes
-to customize what would be shown and play on micro:bit.
-"""
 
 gestures = ('down', 'left', 'right', 'up')
 images = (Image('69996:06960:00600:00000:00000:'),
@@ -119,12 +106,3 @@ while True:
     music.play(music.WAWAWAWAA)
     break
 
-
-# display final score
-
-sleep(1000)
-audio.play(Sound.HAPPY)
-
-while True:
-    display.scroll('SCORE: {}'.format(len(simon) - 1))
-    sleep(1000)
