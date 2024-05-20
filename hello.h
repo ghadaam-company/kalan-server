@@ -1,49 +1,4 @@
 
-  */
-#pragma once
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-#include <stdint.h>
-#include <math.h>
-#include "mtmn.h"
-
-#define LANDMARKS_NUM (10)
-
-#define MAX_VALID_COUNT_PER_IMAGE (30)
-
-#define DL_IMAGE_MIN(A, B) ((A) < (B) ? (A) : (B))
-#define DL_IMAGE_MAX(A, B) ((A) < (B) ? (B) : (A))
-
-#define RGB565_MASK_RED 0xF800
-#define RGB565_MASK_GREEN 0x07E0
-#define RGB565_MASK_BLUE 0x001F
-
-    typedef enum
-    {
-        BINARY, /*!< binary */
-    } en_threshold_mode;
-
-    typedef struct
-    {
-        fptp_t landmark_p[LANDMARKS_NUM]; /*!< landmark struct */
-    } landmark_t;
-
-    typedef struct
-    {
-        fptp_t box_p[4]; /*!< box struct */
-    } box_t;
-
-    typedef struct tag_box_list
-    {
-        uint8_t *category;    /*!< The category of the corresponding box */
-        fptp_t *score;        /*!< The confidence score of the class corresponding to the box */
-        box_t *box;           /*!< Anchor boxes or predicted boxes*/
-        landmark_t *landmark; /*!< The landmarks corresponding to the box */
-        int len;              /*!< The num of the boxes */
-    } box_array_t;
-
     typedef struct tag_image_box
     {
         struct tag_image_box *next; /*!< Next image_box_t */
